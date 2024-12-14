@@ -1,9 +1,10 @@
 import sympy
+import sys
 from sympy.solvers import solve
 from sympy.parsing.sympy_parser import parse_expr
 
 
-f = open("test file.txt", "r")
+f = open(sys.argv[1], "r")
 code = []
 for line in f:
     if line[0] != '#':
@@ -61,10 +62,14 @@ for line in code:
             print(line)
             expr = (sympy.simplify(sympy.cancel(eval(line))))
             print(sympy.simplify(expr))
-            print(solve(sympy.factor(sympy.simplify(sympy.cancel(eval(line)))), vars))
         if mode == 3:
-            for point in points.keys():
-                print(f"{point}: ({points[point][0]},{points[point][1]})")
-            for line in lines.keys():
-                print(f"{line}: {lines[line][0]}x + {lines[line][1]}y + {lines[line][2]} = 0")
+            print(line)
+            expr = (sympy.simplify(sympy.cancel(eval(line))))
+            print(solve(sympy.factor(sympy.simplify(sympy.cancel(eval(line)))), vars))
+            
+if (len(sys.argv) > 2) and (sys.argv[2]):
+    for point in points.keys():
+        print(f"{point}: ({points[point][0]},{points[point][1]})")
+    for line in lines.keys():
+        print(f"{line}: {lines[line][0]}x + {lines[line][1]}y + {lines[line][2]} = 0")
 f.close()

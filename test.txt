@@ -1,0 +1,25 @@
+a b c_p
+~~~
+Pt A def -1 0
+Pt B def b 0
+Pt C def a c 
+# Midpoint of AB
+Pt D midpoint A B
+# Line segment BC
+Line BC 2poi B C
+# Median through A (Line through A and D)
+Line L 2poi A D
+# Point dividing BC in a 2:1 ratio
+Pt E section B C 2 1
+# Line perpendicular to L through E
+Line L1 perp L E
+# intersection of L1 and BC
+Pt F intersect L1 BC
+~~~
+# Slope of L
+-lines['L'][0]/lines['L'][1]
+# y-intercept of L1
+lines['L1'][2]
+~~~
+# Solving when the x component of E is 0
+points['E'][0]
