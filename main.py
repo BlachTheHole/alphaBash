@@ -29,7 +29,6 @@ for line in code:
         if mode == 0:
             names += line + " "
         if mode == 1:
-            print(line)
             instr = line.split()
             if instr[0] == "Pt":
                 if instr[2] == "def":
