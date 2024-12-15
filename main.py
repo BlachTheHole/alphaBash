@@ -29,6 +29,7 @@ for line in code:
         if mode == 0:
             names += line + " "
         if mode == 1:
+            print(line)
             instr = line.split()
             if instr[0] == "Pt":
                 if instr[2] == "def":
@@ -39,6 +40,8 @@ for line in code:
                     points[instr[1]] = [sympy.simplify((lines[instr[3]][2]*lines[instr[4]][1]-lines[instr[3]][1]*lines[instr[4]][2])/(lines[instr[3]][1]*lines[instr[4]][0]-lines[instr[3]][0]*lines[instr[4]][1])), sympy.simplify((lines[instr[3]][2]*lines[instr[4]][0]-lines[instr[3]][0]*lines[instr[4]][2])/(-lines[instr[3]][1]*lines[instr[4]][0]+lines[instr[3]][0]*lines[instr[4]][1]))]
                 elif instr[2] == "section":
                     points[instr[1]] = [sympy.simplify((points[instr[3]][0]*parse_expr(instr[6])+points[instr[4]][0]*parse_expr(instr[5]))/(parse_expr(instr[6])+parse_expr(instr[5]))),sympy.simplify((points[instr[3]][1]*parse_expr(instr[6])+points[instr[4]][1]*parse_expr(instr[5]))/(parse_expr(instr[6])+parse_expr(instr[5])))]
+                elif instr[2] == "wgtcen":
+                    points[instr[1]] = [sympy.simplify(((points[instr[3]][0]*parse_expr(instr[6]))+(points[instr[4]][0]*parse_expr(instr[7]))+(points[instr[5]][0]*parse_expr(instr[8])))/((parse_expr(instr[6]))+(parse_expr(instr[7]))+(parse_expr(instr[8])))),sympy.simplify(((points[instr[3]][1]*parse_expr(instr[6]))+(points[instr[4]][1]*parse_expr(instr[7]))+(points[instr[5]][1]*parse_expr(instr[8])))/((parse_expr(instr[6]))+(parse_expr(instr[7]))+(parse_expr(instr[8]))))]
                 elif instr[2] == "project":
                     interm = sympy.simplify((lines[instr[3]][0]*points[instr[4]][0]+lines[instr[3]][1]*points[instr[4]][1]+lines[instr[3]][2])/((lines[instr[3]][0]**2)+(lines[instr[3]][1]**2)))
                     points[instr[1]] = [sympy.simplify(points[instr[4]][0]-interm*lines[instr[3]][0]), sympy.simplify(points[instr[4]][1]-interm*lines[instr[3]][1])]
