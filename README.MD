@@ -35,6 +35,11 @@ Pt A section B C m n
 ```
 B and C are points which have been defined before. m and n are real numbers. Here, A is the point on BC such that AB:AC=m:n.
 ```
+Pt A wgtcen B C D m n o
+```
+Basically an auxillary function useful for making some triangle centers. B, C, D are points which have been defined before. m, n, o are real numbers. Here, A is defined as the weighted mean of their co-ordinates, with weight m attached to B, n to C and o to D.
+
+```
 Pt A project L B
 ```
 Here L is a pre-defined line and B is a pre-defined point. Here, A will be the projection of B onto L.
